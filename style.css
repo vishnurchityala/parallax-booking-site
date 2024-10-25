@@ -11,7 +11,7 @@ body{
 .main-container{
     background: rgb(20,0,61);
     background: linear-gradient(221deg, rgba(20,0,61,1) 5%, rgba(0,0,0,1) 50%, rgba(20,0,61,1) 95%);
-    height: 800px;
+    min-height: 850px;
 }
 
 .glass-navbar{
@@ -27,6 +27,28 @@ body{
     box-shadow: 0 0 2rem rgba(224, 224, 224, 0.2);
 }
 .glass-navbar a {
+    color: rgb(239, 239, 239);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: transform 0.4s ease-in-out, color 0.4s ease-in-out;
+    display: inline-block;
+}
+
+.glass-login{
+    margin-top: 2rem;
+    margin-left: 1rem;
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    background-color: rgba(169, 169, 169, 0.3);
+    border-radius: 1.8rem;
+    border: 1.6px solid rgba(255, 255, 255, 0.125);
+    padding: 1rem 1.6rem;
+    display: flex;
+    gap:3rem;
+    box-shadow: 0 0 2rem rgba(224, 224, 224, 0.2);
+}
+.glass-login a {
     color: rgb(239, 239, 239);
     text-decoration: none;
     font-weight: 500;
@@ -108,7 +130,8 @@ body{
     border-radius: 0.8rem;
     transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
     font-weight: 500;
-    box-shadow: 0 0 2.4rem rgba(255, 0, 0, 0.4);
+    font-size: small;
+    box-shadow: 0 0 2.4rem rgba(255, 0, 0, 0.2);
 }
 
 
@@ -145,8 +168,6 @@ body{
 
 .seat-icon.white i {
     color: #ffffff;
-    text-shadow: 0 0 0.8rem rgba(255, 255, 255, 0.3);
-
 }
 
 .seat-icon.gray i {
@@ -216,6 +237,19 @@ body{
     animation: spin 1s linear infinite;
 }
 
+/* Style for disabled button to keep it visually consistent */
+#book-seat-button:disabled {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #ffffff;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.8rem;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    font-weight: 500;
+    font-size: small;
+}
+
+
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
@@ -242,5 +276,9 @@ body{
     .seats-container {
         margin-top:20px;
         gap:20px;
+    }
+    .glass-navbar{
+        margin-top: 2rem;
+        padding: 1rem 1.2rem;
     }
 }
