@@ -104,18 +104,18 @@ async function checkUserBookings(user) {
             bookSeatButton.classList.add('btn-success'); 
             bookSeatButton.classList.remove('btn-white'); 
             bookSeatButton.style.display = 'inline-block'; 
-            cancelSeatButton.style.display = 'inline-block'; // Show cancel button
+            cancelSeatButton.style.display = 'inline-block';
         } else {
             bookSeatButton.textContent = 'Book Seat'; 
             bookSeatButton.disabled = false; 
             bookSeatButton.classList.remove('btn-success'); 
             bookSeatButton.classList.add('btn-white'); 
             bookSeatButton.style.display = 'inline-block'; 
-            cancelSeatButton.style.display = 'none'; // Hide cancel button
+            cancelSeatButton.style.display = 'none';
         }
     } else {
         bookSeatButton.style.display = 'none'; 
-        cancelSeatButton.style.display = 'none'; // Ensure cancel button is hidden if not logged in
+        cancelSeatButton.style.display = 'none';
     }
 }
 
@@ -205,7 +205,7 @@ async function bookSeat(user, selectedSlotId) {
         console.error('Error booking seat:', error);
     } finally {
         loader.classList.add('d-none');
-        location.reload(); // Reload the page
+        location.reload();
     }
 }
 
@@ -216,15 +216,14 @@ async function cancelBooking(user) {
 
     if (userBooking) {
         const bookingDocRef = doc(bookingsCollection, userBooking.id);
-        const slotDoc = doc(db, 'slots', userBooking.data().slotId); // Get the slot document reference
+        const slotDoc = doc(db, 'slots', userBooking.data().slotId);
 
         try {
-            // Update the slot before deleting the booking
             const slotSnapshot = await getDoc(slotDoc);
             if (slotSnapshot.exists()) {
                 const slotData = slotSnapshot.data();
-                const newAvailableSeats = slotData.availableSeats + 1; // Increment available seats
-                const newBookedSeats = slotData.bookedSeats - 1; // Decrement booked seats
+                const newAvailableSeats = slotData.availableSeats + 1;
+                const newBookedSeats = slotData.bookedSeats - 1;
 
                 await updateDoc(slotDoc, {
                     availableSeats: newAvailableSeats,
@@ -250,8 +249,8 @@ document.getElementById('cancel-seat-button').addEventListener('click', async ()
     loader.classList.remove('d-none');
     const user = auth.currentUser;
     if (user) {
-        await cancelBooking(user); // Call the cancelBooking function when the button is clicked
-        location.reload(); // Reload the page after cancelling
+        await cancelBooking(user);
+        location.reload();
     }
     loader.classList.add('d-none');
 });
@@ -261,17 +260,17 @@ document.getElementById('book-seat-button').addEventListener('click', async () =
     const user = auth.currentUser;
     const selectedSlotId = document.querySelector('.select-white-outline').value; 
     if (user) {
-        await bookSeat(user, selectedSlotId); // Call the bookSeat function when the button is clicked
+        await bookSeat(user, selectedSlotId);
     }
 });
 
 // Event listener for the View Seats button
 document.getElementById('view-seats-button').addEventListener('click', () => {
     const selectedSlot = document.querySelector('.select-white-outline').value; 
-    loadSelectedSlotDetails(selectedSlot); // Load details for the selected slot when the button is clicked
+    loadSelectedSlotDetails(selectedSlot);
 });
 
 // Load slots and update initial view on page load
 window.addEventListener('load', () => {
-    loadSlotDetails(); // Load slots on page load
+    loadSlotDetails();
 });
