@@ -202,11 +202,11 @@ body{
 
 @media (max-width: 760px){
     .page-hero-text{
-        font-size: 36px;
+        font-size: 30px;
         width:100%;
     }
     .page-hero-text-gradient{
-        font-size:80px;
+        font-size:74px;
     }
     .page-hero-text-container{
         height:auto;
