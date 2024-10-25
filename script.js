@@ -246,11 +246,14 @@ async function cancelBooking(user) {
 
 // Event listener for the Cancel Seat button
 document.getElementById('cancel-seat-button').addEventListener('click', async () => {
+    const loader = document.getElementById('loader'); 
+    loader.classList.remove('d-none');
     const user = auth.currentUser;
     if (user) {
         await cancelBooking(user); // Call the cancelBooking function when the button is clicked
         location.reload(); // Reload the page after cancelling
     }
+    loader.classList.add('d-none');
 });
 
 // Event listener for the Book Seat button
