@@ -1,0 +1,224 @@
+
+:root{
+    --navy-blue:#020118;
+}
+
+body{
+    background-color: var(--navy-blue);
+    user-select: none;
+}
+
+.main-container{
+    background: rgb(20,0,61);
+    background: linear-gradient(221deg, rgba(20,0,61,1) 5%, rgba(0,0,0,1) 50%, rgba(20,0,61,1) 95%);
+    height: 800px;
+}
+
+.glass-navbar{
+    margin-top: 2rem;
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    background-color: rgba(169, 169, 169, 0.3);
+    border-radius: 1.8rem;
+    border: 1.6px solid rgba(255, 255, 255, 0.125);
+    padding: 1rem 3rem;
+    display: flex;
+    gap:3rem;
+    box-shadow: 0 0 2rem rgba(224, 224, 224, 0.3);
+}
+.glass-navbar a {
+    color: rgb(239, 239, 239);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: transform 0.4s ease-in-out, color 0.4s ease-in-out;
+    display: inline-block;
+}
+
+.glass-navbar a:hover {
+    transform: scale(1.1);
+}
+
+.page-hero-text-container{
+    display: flex;
+    flex-direction: column;
+    height:600px;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-hero-text{
+    display: inline-block;
+    color: white;
+    font-size: 40px;
+    font-weight: 700;
+    margin: 0px;
+    line-height: 42px;
+    width:750px;
+    text-align: center;
+}
+
+.page-hero-text-gradient{
+    display: inline-block;
+    background: linear-gradient(to right, #E73694 20%, #F2F677 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 100% 100%;
+    font-size: 92px;
+    font-weight: 700;
+    margin: 0px;
+    margin-top: 8px;
+}
+
+.btn-white {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #ffffff;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.8rem;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    box-shadow: 0 0 2.4rem rgba(255, 255, 255, 0.4);
+    font-weight: 500;
+
+}
+
+.btn-white:hover {
+    background-color: #e8e8e8;
+    color: #000000;
+    border-color: #f8f9fa;
+}
+
+.btn-white-outline {
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.8rem;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    box-shadow: 0 0 2.4rem rgba(255, 255, 255, 0.1);
+    font-weight: 500;
+}
+
+/* Red cancel button with glowing effect */
+.btn-cancel {
+    background-color: #ff0000; /* Red background */
+    color: #ffffff; /* White text */
+    border: 1px solid #ff0000; /* Border matches the red background */
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.8rem;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+    font-weight: 500;
+    box-shadow: 0 0 2.4rem rgba(255, 0, 0, 0.4); /* Initial subtle glow */
+}
+
+
+.btn-white-outline:hover {
+    background-color: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+}
+
+.seats-booking-container{
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    background-color: rgba(169, 169, 169, 0.3);
+    border-radius: 1.8rem;
+    border: 1.6px solid rgba(255, 255, 255, 0.125);
+    padding: 2.8rem 2.8rem; 
+    display: flex;
+    flex-direction: column;
+}
+
+.seats-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    max-width:500px;
+}
+
+.seat-icon i {
+    font-size: 22px;
+}
+
+.seat-icon.white i {
+    color: #ffffff;
+    text-shadow: 0 0 0.8rem rgba(255, 255, 255, 0.3);
+
+}
+
+.seat-icon.gray i {
+    color: #5a5a5a;
+}
+
+/* Base select menu with outline styling */
+.select-white-outline {
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 0.8rem;
+    padding: 0.5rem 1.5rem;
+    font-weight: 500;
+    appearance: none; /* Removes default arrow */
+    width: 100%;
+    max-width: 300px; /* Adjust width as needed */
+    outline: none;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+    padding-right: 2rem; /* Add space for the icon */
+    position: relative;
+}
+
+/* Custom chevron down icon */
+.select-chevron {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ffffff;
+    pointer-events: none;
+    font-size: 0.9rem;
+}
+
+/* Hover and focus effects */
+.select-white-outline:hover,
+.select-white-outline:focus {
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent white */
+    border-color: #ffffff;
+    color: #ffffff;
+}
+
+/* Styling the options inside the dropdown */
+.select-white-outline option {
+    background-color: #020118; /* Navy background to match your design */
+    color: #ffffff;
+    padding: 0.5rem;
+}
+
+
+
+
+@media (max-width: 760px){
+    .page-hero-text{
+        font-size: 36px;
+        width:100%;
+    }
+    .page-hero-text-gradient{
+        font-size:80px;
+    }
+    .page-hero-text-container{
+        height:auto;
+    }
+    .main-container{
+        height: 900px;
+    }
+    .seat-icon i {
+        font-size: 18px; /* Adjust icon size */
+    }
+    .seats-container {
+        margin-top:20px;
+        gap:20px;
+    }
+}
