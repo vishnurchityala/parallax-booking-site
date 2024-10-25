@@ -41,10 +41,11 @@ body{
     backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px);
     background-color: rgba(169, 169, 169, 0.3);
-    border-radius: 1.8rem;
+    border-radius: 1.2rem;
     border: 1.6px solid rgba(255, 255, 255, 0.125);
-    padding: 1rem 1.6rem;
+    padding: 1rem 1rem;
     display: flex;
+    font-size: small;
     gap:3rem;
     box-shadow: 0 0 2rem rgba(224, 224, 224, 0.2);
 }
@@ -52,7 +53,7 @@ body{
     color: rgb(239, 239, 239);
     text-decoration: none;
     font-weight: 500;
-    font-size: 0.9rem;
+    font-size: small;
     transition: transform 0.4s ease-in-out, color 0.4s ease-in-out;
     display: inline-block;
 }
@@ -279,6 +280,6 @@ body{
     }
     .glass-navbar{
         margin-top: 2rem;
-        padding: 1rem 1.2rem;
+        padding: 1rem 1.8rem;
     }
 }
