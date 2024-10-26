@@ -99,7 +99,9 @@ async function checkUserBookings(user) {
         if (userBooking) {
             const bookingData = userBooking.data();
             bookSeatButton.style.fontSize = 'x-small';
-            bookSeatButton.textContent = `Booked : ${bookingData.slotId}`;
+            const slotId = bookingData.slotId;
+            const formattedSlotId = `${slotId.slice(0, -1).toUpperCase()}-${slotId.slice(-1)}`;
+            bookSeatButton.textContent = `Booked Slot: ${formattedSlotId}`;            
             bookSeatButton.disabled = true; 
             bookSeatButton.classList.add('btn-success'); 
             bookSeatButton.classList.remove('btn-white'); 
@@ -121,6 +123,7 @@ async function checkUserBookings(user) {
 
 // Function to update login indicator
 function updateLoginIndicator(user) {
+    const loader = document.getElementById('loader');
     const loginIndicator = document.querySelector('.glass-login');
     loginIndicator.innerHTML = '';
 
@@ -134,9 +137,12 @@ function updateLoginIndicator(user) {
 
         iconDiv.addEventListener('click', async () => {
             try {
+                loader.classList.remove('d-none');
                 await signOut(auth); 
+                loader.classList.add('d-none');
             } catch (error) {
                 console.error('Error during sign-out:', error);
+                loader.classList.add('d-none');
             }
         });
     } else {
@@ -146,9 +152,12 @@ function updateLoginIndicator(user) {
         loginLink.addEventListener('click', async (event) => {
             event.preventDefault(); 
             try {
+                loader.classList.remove('d-none');
                 await signInWithPopup(auth, provider);
+                loader.classList.add('d-none');
             } catch (error) {
                 console.error('Error during sign-in:', error);
+                loader.classList.add('d-none');
             }
         });
         loginIndicator.appendChild(loginLink);

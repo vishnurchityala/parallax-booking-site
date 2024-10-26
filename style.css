@@ -1,17 +1,21 @@
-
-:root{
-    --navy-blue:#020118;
-}
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap');
 
 body{
-    background-color: var(--navy-blue);
+    background-color:rgb(15, 15, 15);
     user-select: none;
 }
 
-.main-container{
-    background: rgb(20,0,61);
-    background: linear-gradient(221deg, rgba(20,0,61,1) 5%, rgba(0,0,0,1) 50%, rgba(20,0,61,1) 95%);
-    min-height: 850px;
+.main-container {
+    background: linear-gradient(to bottom right, 
+        rgba(113, 0, 135, 0.7) 0%,
+        rgba(70, 0, 70, 0.6) 15%,
+        rgb(15, 15, 15) 35%,
+        rgb(15, 15,15) 65%, 
+        rgba(80, 50, 0, 0.5) 85%, 
+        rgba(121, 76, 0, 0.7) 100%
+    );
+    color: #fff;
+    min-height: 800px;
 }
 
 .glass-navbar{
@@ -71,9 +75,10 @@ body{
 }
 
 .page-hero-text{
+    font-family: "Orbitron", sans-serif;
     display: inline-block;
     color: white;
-    font-size: 40px;
+    font-size: 32px;
     font-weight: 700;
     margin: 0px;
     line-height: 42px;
@@ -82,6 +87,7 @@ body{
 }
 
 .page-hero-text-gradient{
+    font-family: "Orbitron", sans-serif;
     display: inline-block;
     background: linear-gradient(to right, #E73694 20%, #F2F677 100%);
     background-clip: text;
@@ -151,6 +157,7 @@ body{
     padding: 2.8rem 2.8rem; 
     display: flex;
     flex-direction: column;
+    box-shadow: 0 0 1.4rem rgba(224, 224, 224, 0.25);
 }
 
 .seats-container {
@@ -240,9 +247,9 @@ body{
 
 /* Style for disabled button to keep it visually consistent */
 #book-seat-button:disabled {
-    background-color: #ffffff;
-    color: #000000;
-    border: 1px solid #ffffff;
+    background-color: #30be00;
+    color: white;
+    border: 1px solid #30be00;
     padding: 0.5rem 1.5rem;
     border-radius: 0.8rem;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
@@ -250,6 +257,45 @@ body{
     font-size: small;
 }
 
+.page-footer{
+    display: flex;
+}
+
+.footer-logo{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding-top: 2.2rem;
+    padding-bottom: 2.2rem;
+}
+
+.footer-logo  p{
+    width:180px;
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    font-size: small;
+    font-weight: 700;
+    text-shadow:0 0 2rem rgba(224, 224, 224, 0.8);
+}
+.footer-logo div{
+    margin-top: 2.8rem;
+}
+
+.footer-logo a {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    color: white;
+    text-decoration: none;
+    font-size: small;
+    font-weight: 700;
+    text-shadow: 0 0 2rem rgba(224, 224, 224, 0.75);
+}
+
+.footer-logo  img{
+    width:100%;
+}
 
 @keyframes spin {
     0% { transform: rotate(0deg); }
@@ -259,11 +305,11 @@ body{
 
 @media (max-width: 760px){
     .page-hero-text{
-        font-size: 30px;
+        font-size: 28px;
         width:100%;
     }
     .page-hero-text-gradient{
-        font-size:74px;
+        font-size:60px;
     }
     .page-hero-text-container{
         height:auto;
