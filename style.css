@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&family=Tiny5&display=swap');
-body{
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&family=Permanent+Marker&family=Tiny5&display=swap');body{
     background-color:rgb(15, 15, 15);
     user-select: none;
 }
@@ -273,7 +272,7 @@ body{
 }
 
 .bookie-name{
-    font-family: "Tiny5", sans-serif;
+    font-family: "Permanent Marker", cursive;
     font-size: 44px;
     line-height:46px;
     color: white;
@@ -360,6 +359,10 @@ body{
     .glass-navbar{
         margin-top: 2rem;
         padding: 1rem 1.8rem;
+    }
+
+    .bookie-name{
+        font-size:36px;
     }
 
     .sample-ticket-container{
