@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&family=Tiny5&display=swap');
 body{
     background-color:rgb(15, 15, 15);
     user-select: none;
@@ -97,7 +96,9 @@ body{
     font-size: 92px;
     font-weight: 900;
     margin: 0px;
-    margin-top: 8px;
+    margin-top: 4px;
+    line-height: 92px;
+    margin-bottom:1.2rem;
 }
 
 .btn-white {
@@ -257,6 +258,38 @@ body{
     font-size: small;
 }
 
+.sample-ticket-container{
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    background-color: rgba(169, 169, 169, 0.3);
+    border-radius: 1.8rem;
+    border: 1.6px solid rgba(255, 255, 255, 0.3);
+    width: fit-content;
+    padding: 2rem 2.4rem;
+    box-shadow: 0 0 2rem rgba(224, 224, 224, 0.2);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:2rem;
+}
+
+.bookie-name{
+    font-family: "Tiny5", sans-serif;
+    font-size: 44px;
+    line-height:46px;
+    color: white;
+    margin:0px;
+}
+
+.booking-details{
+    font-family: "Orbitron", sans-serif;
+    font-size: 14px;
+    line-height:16px;
+    color: white;
+    margin:0px;
+    margin-top:8px;
+    font-weight: 800;
+}
+
 .page-footer{
     display: flex;
 }
@@ -327,5 +360,9 @@ body{
     .glass-navbar{
         margin-top: 2rem;
         padding: 1rem 1.8rem;
+    }
+
+    .sample-ticket-container{
+        padding: 2rem 1.8rem;
     }
 }
