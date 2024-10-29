@@ -87,10 +87,13 @@ async function loadSelectedSlotDetails(selectedSlot) {
     }
 }
 
-// Function to check user bookings and update button visibility
+// Function to check user bookings and update booking ticket visibility
 async function checkUserBookings(user) {
     const bookSeatButton = document.getElementById('book-seat-button');
     const cancelSeatButton = document.getElementById('cancel-seat-button');
+    const bookingTicketDiv = document.getElementById('booking-ticket'); // Ticket div
+    const bookieNameElement = document.querySelector('.bookie-name'); // Name element in ticket
+    const bookingSlotTiming = document.getElementById('booking-slot');
 
     if (user) {
         const bookingsSnapshot = await getDocs(bookingsCollection);
@@ -98,8 +101,24 @@ async function checkUserBookings(user) {
 
         if (userBooking) {
             const bookingData = userBooking.data();
-            bookSeatButton.style.fontSize = 'x-small';
+            bookieNameElement.textContent = user.displayName || "Guest"; // Set user name on ticket
+
+            // Show booking ticket div
+            bookingTicketDiv.classList.remove('d-none');
+
+            // Update book seat button to reflect booking
+            const slotTimings = {
+                slot1: "7:00PM - 8:00PM",
+                slot2: "8:00PM - 9:00PM",
+                slot3: "9:00PM - 10:00PM",
+                slot4: "10:00PM - 11:00PM",
+                slot5: "11:00PM - 12:00AM",
+                slot6: "12:00AM - 1:00AM",
+                slot7: "1:00AM - 2:00AM"
+            };
+            
             const slotId = bookingData.slotId;
+            bookingSlotTiming.textContent = slotTimings[slotId];
             const formattedSlotId = `${slotId.slice(0, -1).toUpperCase()}-${slotId.slice(-1)}`;
             bookSeatButton.textContent = `Booked Slot: ${formattedSlotId}`;            
             bookSeatButton.disabled = true; 
@@ -108,6 +127,10 @@ async function checkUserBookings(user) {
             bookSeatButton.style.display = 'inline-block'; 
             cancelSeatButton.style.display = 'inline-block';
         } else {
+            // No booking found
+            bookingTicketDiv.classList.add('d-none'); // Hide booking ticket div
+
+            // Reset book seat button
             bookSeatButton.textContent = 'Book Seat'; 
             bookSeatButton.disabled = false; 
             bookSeatButton.classList.remove('btn-success'); 
@@ -116,6 +139,8 @@ async function checkUserBookings(user) {
             cancelSeatButton.style.display = 'none';
         }
     } else {
+        // User is not logged in
+        bookingTicketDiv.classList.add('d-none'); // Hide booking ticket div
         bookSeatButton.style.display = 'none'; 
         cancelSeatButton.style.display = 'none';
     }
