@@ -2,6 +2,24 @@
     background-color:rgb(15, 15, 15);
     user-select: none;
 }
+.font-heading{
+    font-family: "Orbitron", sans-serif;
+    font-weight: 800;
+}
+
+.fs-small{
+    font-size: small;
+}
+
+.glass-card{
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    background-color: rgba(169, 169, 169, 0.3);
+    border-radius: 1.8rem;
+    border: 1.6px solid rgba(255, 255, 255, 0.125);
+    padding: 2rem 2rem;
+    box-shadow: 0 0 2rem rgba(224, 224, 224, 0.2);
+}
 
 .main-container {
     background: linear-gradient(to bottom right, 
@@ -347,7 +365,7 @@
         height:auto;
     }
     .main-container{
-        height: 780px;
+        min-height: 780px;
     }
     .seat-icon i {
         font-size: 18px;
