@@ -21,7 +21,7 @@
                 <div id="bookings-details-container" class="d-flex flex-column align-items-center">
                     <div class="select-container w-100 ms-3 mb-4 mt-4" style="position: relative; max-width: 300px;">
                         <select id="slots-select-menu" class="select-white-outline">
-                            <option value="option1">7:00PM-8:00PM</option>
+                            <option default value="option1">7:00PM-8:00PM</option>
                             <option value="option2">8:00PM-9:00PM</option>
                             <option value="option3">9:00PM-10:00PM</option>
                             <option value="option4">10:00PM-11:00PM</option>
@@ -31,13 +31,16 @@
                         </select>
                         <i class="fa-solid fa-chevron-down select-chevron"></i>
                     </div>
-                    <div class="grid row gap-3 justify-content-center">
+                    <div id="bookings-container" class="grid row gap-3 justify-content-center">
                         <div class="glass-card px-3 py-3 col-11 col-md-auto fs-small">
                             <p class="font-heading m-0 mt-2">Name :<span class="fw-light ms-2"> Vishnu Chityala</span></p>
                             <p class="font-heading m-0 mt-2">Email : <span class="fw-light ms-2">vishnurchityala@gmail.com</span></p>
                             <p class="font-heading m-0 mt-2">Slot : <span class="fw-light ms-2">1:00AM-2:00AM</span></p>
                             <button class="btn-cancel mt-3" style="font-size: x-small;">
                                 Cancel Seat
+                            </button>
+                            <button class="btn-success mt-3 ms-3" style="font-size: x-small;">
+                                Check In
                             </button>
                         </div>
                         <div class="glass-card px-3 py-3 col-11 col-md-auto fs-small">
@@ -47,13 +50,8 @@
                             <button class="btn-cancel mt-3" style="font-size: x-small;">
                                 Cancel Seat
                             </button>
-                        </div>
-                        <div class="glass-card px-3 py-3 col-11 col-md-auto fs-small">
-                            <p class="font-heading m-0 mt-2">Name :<span class="fw-light ms-2"> Vishnu Chityala</span></p>
-                            <p class="font-heading m-0 mt-2">Email : <span class="fw-light ms-2">vishnurchityala@gmail.com</span></p>
-                            <p class="font-heading m-0 mt-2">Slot : <span class="fw-light ms-2">1:00AM-2:00AM</span></p>
-                            <button class="btn-cancel mt-3" style="font-size: x-small;">
-                                Cancel Seat
+                            <button class="btn-success mt-3 ms-3" style="font-size: x-small;">
+                                Check In
                             </button>
                         </div>
                         <div class="glass-card px-3 py-3 col-11 col-md-auto fs-small">
@@ -63,253 +61,8 @@
                             <button class="btn-cancel mt-3" style="font-size: x-small;">
                                 Cancel Seat
                             </button>
-                        </div>
-                        <div class="glass-card px-3 py-3 col-11 col-md-auto fs-small">
-                            <p class="font-heading m-0 mt-2">Name :<span class="fw-light ms-2"> Vishnu Chityala</span></p>
-                            <p class="font-heading m-0 mt-2">Email : <span class="fw-light ms-2">vishnurchityala@gmail.com</span></p>
-                            <p class="font-heading m-0 mt-2">Slot : <span class="fw-light ms-2">1:00AM-2:00AM</span></p>
-                            <button class="btn-cancel mt-3" style="font-size: x-small;">
-                                Cancel Seat
-                            </button>
-                        </div>
-                        <div class="glass-card px-3 py-3 col-11 col-md-auto fs-small">
-                            <p class="font-heading m-0 mt-2">Name :<span class="fw-light ms-2"> Vishnu Chityala</span></p>
-                            <p class="font-heading m-0 mt-2">Email : <span class="fw-light ms-2">vishnurchityala@gmail.com</span></p>
-                            <p class="font-heading m-0 mt-2">Slot : <span class="fw-light ms-2">1:00AM-2:00AM</span></p>
-                            <button class="btn-cancel mt-3" style="font-size: x-small;">
-                                Cancel Seat
-                            </button>
-                        </div>
-                        <div class="glass-card px-3 py-3 col-11 col-md-auto fs-small">
-                            <p class="font-heading m-0 mt-2">Name :<span class="fw-light ms-2"> Vishnu Chityala</span></p>
-                            <p class="font-heading m-0 mt-2">Email : <span class="fw-light ms-2">vishnurchityala@gmail.com</span></p>
-                            <p class="font-heading m-0 mt-2">Slot : <span class="fw-light ms-2">1:00AM-2:00AM</span></p>
-                            <button class="btn-cancel mt-3" style="font-size: x-small;">
-                                Cancel Seat
-                            </button>
-                        </div>
-                        <div class="glass-card px-3 py-3 col-11 col-md-auto fs-small">
-                            <p class="font-heading m-0 mt-2">Name :<span class="fw-light ms-2"> Vishnu Chityala</span></p>
-                            <p class="font-heading m-0 mt-2">Email : <span class="fw-light ms-2">vishnurchityala@gmail.com</span></p>
-                            <p class="font-heading m-0 mt-2">Slot : <span class="fw-light ms-2">1:00AM-2:00AM</span></p>
-                            <button class="btn-cancel mt-3" style="font-size: x-small;">
-                                Cancel Seat
-                            </button>
-                        </div>
-                        <div class="glass-card px-3 py-3 col-11 col-md-auto fs-small">
-                            <p class="font-heading m-0 mt-2">Name :<span class="fw-light ms-2"> Vishnu Chityala</span></p>
-                            <p class="font-heading m-0 mt-2">Email : <span class="fw-light ms-2">vishnurchityala@gmail.com</span></p>
-                            <p class="font-heading m-0 mt-2">Slot : <span class="fw-light ms-2">1:00AM-2:00AM</span></p>
-                            <button class="btn-cancel mt-3" style="font-size: x-small;">
-                                Cancel Seat
-                            </button>
-                        </div>
-                        <div class="glass-card px-3 py-3 col-11 col-md-auto fs-small">
-                            <p class="font-heading m-0 mt-2">Name :<span class="fw-light ms-2"> Vishnu Chityala</span></p>
-                            <p class="font-heading m-0 mt-2">Email : <span class="fw-light ms-2">vishnurchityala@gmail.com</span></p>
-                            <p class="font-heading m-0 mt-2">Slot : <span class="fw-light ms-2">1:00AM-2:00AM</span></p>
-                            <button class="btn-cancel mt-3" style="font-size: x-small;">
-                                Cancel Seat
-                            </button>
-                        </div>
-                        <div class="glass-card px-3 py-3 col-11 col-md-auto fs-small">
-                            <p class="font-heading m-0 mt-2">Name :<span class="fw-light ms-2"> Vishnu Chityala</span></p>
-                            <p class="font-heading m-0 mt-2">Email : <span class="fw-light ms-2">vishnurchityala@gmail.com</span></p>
-                            <p class="font-heading m-0 mt-2">Slot : <span class="fw-light ms-2">1:00AM-2:00AM</span></p>
-                            <button class="btn-cancel mt-3" style="font-size: x-small;">
-                                Cancel Seat
-                            </button>
-                        </div>
-                        <div class="glass-card px-3 py-3 col-11 col-md-auto fs-small">
-                            <p class="font-heading m-0 mt-2">Name :<span class="fw-light ms-2"> Vishnu Chityala</span></p>
-                            <p class="font-heading m-0 mt-2">Email : <span class="fw-light ms-2">vishnurchityala@gmail.com</span></p>
-                            <p class="font-heading m-0 mt-2">Slot : <span class="fw-light ms-2">1:00AM-2:00AM</span></p>
-                            <button class="btn-cancel mt-3" style="font-size: x-small;">
-                                Cancel Seat
-                            </button>
-                        </div>
-                        <div class="glass-card px-3 py-3 col-11 col-md-auto fs-small">
-                            <p class="font-heading m-0 mt-2">Name :<span class="fw-light ms-2"> Vishnu Chityala</span></p>
-                            <p class="font-heading m-0 mt-2">Email : <span class="fw-light ms-2">vishnurchityala@gmail.com</span></p>
-                            <p class="font-heading m-0 mt-2">Slot : <span class="fw-light ms-2">1:00AM-2:00AM</span></p>
-                            <button class="btn-cancel mt-3" style="font-size: x-small;">
-                                Cancel Seat
-                            </button>
-                        </div>
-                        <div class="glass-card px-3 py-3 col-11 col-md-auto fs-small">
-                            <p class="font-heading m-0 mt-2">Name :<span class="fw-light ms-2"> Vishnu Chityala</span></p>
-                            <p class="font-heading m-0 mt-2">Email : <span class="fw-light ms-2">vishnurchityala@gmail.com</span></p>
-                            <p class="font-heading m-0 mt-2">Slot : <span class="fw-light ms-2">1:00AM-2:00AM</span></p>
-                            <button class="btn-cancel mt-3" style="font-size: x-small;">
-                                Cancel Seat
-                            </button>
-                        </div>
-                        <div class="glass-card px-3 py-3 col-11 col-md-auto fs-small">
-                            <p class="font-heading m-0 mt-2">Name :<span class="fw-light ms-2"> Vishnu Chityala</span></p>
-                            <p class="font-heading m-0 mt-2">Email : <span class="fw-light ms-2">vishnurchityala@gmail.com</span></p>
-                            <p class="font-heading m-0 mt-2">Slot : <span class="fw-light ms-2">1:00AM-2:00AM</span></p>
-                            <button class="btn-cancel mt-3" style="font-size: x-small;">
-                                Cancel Seat
-                            </button>
-                        </div>
-                        <div class="glass-card px-3 py-3 col-11 col-md-auto fs-small">
-                            <p class="font-heading m-0 mt-2">Name :<span class="fw-light ms-2"> Vishnu Chityala</span></p>
-                            <p class="font-heading m-0 mt-2">Email : <span class="fw-light ms-2">vishnurchityala@gmail.com</span></p>
-                            <p class="font-heading m-0 mt-2">Slot : <span class="fw-light ms-2">1:00AM-2:00AM</span></p>
-                            <button class="btn-cancel mt-3" style="font-size: x-small;">
-                                Cancel Seat
-                            </button>
-                        </div>
-                        <div class="glass-card px-3 py-3 col-11 col-md-auto fs-small">
-                            <p class="font-heading m-0 mt-2">Name :<span class="fw-light ms-2"> Vishnu Chityala</span></p>
-                            <p class="font-heading m-0 mt-2">Email : <span class="fw-light ms-2">vishnurchityala@gmail.com</span></p>
-                            <p class="font-heading m-0 mt-2">Slot : <span class="fw-light ms-2">1:00AM-2:00AM</span></p>
-                            <button class="btn-cancel mt-3" style="font-size: x-small;">
-                                Cancel Seat
-                            </button>
-                        </div>
-                        <div class="glass-card px-3 py-3 col-11 col-md-auto fs-small">
-                            <p class="font-heading m-0 mt-2">Name :<span class="fw-light ms-2"> Vishnu Chityala</span></p>
-                            <p class="font-heading m-0 mt-2">Email : <span class="fw-light ms-2">vishnurchityala@gmail.com</span></p>
-                            <p class="font-heading m-0 mt-2">Slot : <span class="fw-light ms-2">1:00AM-2:00AM</span></p>
-                            <button class="btn-cancel mt-3" style="font-size: x-small;">
-                                Cancel Seat
-                            </button>
-                        </div>
-                        <div class="glass-card px-3 py-3 col-11 col-md-auto fs-small">
-                            <p class="font-heading m-0 mt-2">Name :<span class="fw-light ms-2"> Vishnu Chityala</span></p>
-                            <p class="font-heading m-0 mt-2">Email : <span class="fw-light ms-2">vishnurchityala@gmail.com</span></p>
-                            <p class="font-heading m-0 mt-2">Slot : <span class="fw-light ms-2">1:00AM-2:00AM</span></p>
-                            <button class="btn-cancel mt-3" style="font-size: x-small;">
-                                Cancel Seat
-                            </button>
-                        </div>
-                        <div class="glass-card px-3 py-3 col-11 col-md-auto fs-small">
-                            <p class="font-heading m-0 mt-2">Name :<span class="fw-light ms-2"> Vishnu Chityala</span></p>
-                            <p class="font-heading m-0 mt-2">Email : <span class="fw-light ms-2">vishnurchityala@gmail.com</span></p>
-                            <p class="font-heading m-0 mt-2">Slot : <span class="fw-light ms-2">1:00AM-2:00AM</span></p>
-                            <button class="btn-cancel mt-3" style="font-size: x-small;">
-                                Cancel Seat
-                            </button>
-                        </div>
-                        <div class="glass-card px-3 py-3 col-11 col-md-auto fs-small">
-                            <p class="font-heading m-0 mt-2">Name :<span class="fw-light ms-2"> Vishnu Chityala</span></p>
-                            <p class="font-heading m-0 mt-2">Email : <span class="fw-light ms-2">vishnurchityala@gmail.com</span></p>
-                            <p class="font-heading m-0 mt-2">Slot : <span class="fw-light ms-2">1:00AM-2:00AM</span></p>
-                            <button class="btn-cancel mt-3" style="font-size: x-small;">
-                                Cancel Seat
-                            </button>
-                        </div>
-                        <div class="glass-card px-3 py-3 col-11 col-md-auto fs-small">
-                            <p class="font-heading m-0 mt-2">Name :<span class="fw-light ms-2"> Vishnu Chityala</span></p>
-                            <p class="font-heading m-0 mt-2">Email : <span class="fw-light ms-2">vishnurchityala@gmail.com</span></p>
-                            <p class="font-heading m-0 mt-2">Slot : <span class="fw-light ms-2">1:00AM-2:00AM</span></p>
-                            <button class="btn-cancel mt-3" style="font-size: x-small;">
-                                Cancel Seat
-                            </button>
-                        </div>
-                        <div class="glass-card px-3 py-3 col-11 col-md-auto fs-small">
-                            <p class="font-heading m-0 mt-2">Name :<span class="fw-light ms-2"> Vishnu Chityala</span></p>
-                            <p class="font-heading m-0 mt-2">Email : <span class="fw-light ms-2">vishnurchityala@gmail.com</span></p>
-                            <p class="font-heading m-0 mt-2">Slot : <span class="fw-light ms-2">1:00AM-2:00AM</span></p>
-                            <button class="btn-cancel mt-3" style="font-size: x-small;">
-                                Cancel Seat
-                            </button>
-                        </div>
-                        <div class="glass-card px-3 py-3 col-11 col-md-auto fs-small">
-                            <p class="font-heading m-0 mt-2">Name :<span class="fw-light ms-2"> Vishnu Chityala</span></p>
-                            <p class="font-heading m-0 mt-2">Email : <span class="fw-light ms-2">vishnurchityala@gmail.com</span></p>
-                            <p class="font-heading m-0 mt-2">Slot : <span class="fw-light ms-2">1:00AM-2:00AM</span></p>
-                            <button class="btn-cancel mt-3" style="font-size: x-small;">
-                                Cancel Seat
-                            </button>
-                        </div>
-                        <div class="glass-card px-3 py-3 col-11 col-md-auto fs-small">
-                            <p class="font-heading m-0 mt-2">Name :<span class="fw-light ms-2"> Vishnu Chityala</span></p>
-                            <p class="font-heading m-0 mt-2">Email : <span class="fw-light ms-2">vishnurchityala@gmail.com</span></p>
-                            <p class="font-heading m-0 mt-2">Slot : <span class="fw-light ms-2">1:00AM-2:00AM</span></p>
-                            <button class="btn-cancel mt-3" style="font-size: x-small;">
-                                Cancel Seat
-                            </button>
-                        </div>
-                        <div class="glass-card px-3 py-3 col-11 col-md-auto fs-small">
-                            <p class="font-heading m-0 mt-2">Name :<span class="fw-light ms-2"> Vishnu Chityala</span></p>
-                            <p class="font-heading m-0 mt-2">Email : <span class="fw-light ms-2">vishnurchityala@gmail.com</span></p>
-                            <p class="font-heading m-0 mt-2">Slot : <span class="fw-light ms-2">1:00AM-2:00AM</span></p>
-                            <button class="btn-cancel mt-3" style="font-size: x-small;">
-                                Cancel Seat
-                            </button>
-                        </div>
-                        <div class="glass-card px-3 py-3 col-11 col-md-auto fs-small">
-                            <p class="font-heading m-0 mt-2">Name :<span class="fw-light ms-2"> Vishnu Chityala</span></p>
-                            <p class="font-heading m-0 mt-2">Email : <span class="fw-light ms-2">vishnurchityala@gmail.com</span></p>
-                            <p class="font-heading m-0 mt-2">Slot : <span class="fw-light ms-2">1:00AM-2:00AM</span></p>
-                            <button class="btn-cancel mt-3" style="font-size: x-small;">
-                                Cancel Seat
-                            </button>
-                        </div>
-                        <div class="glass-card px-3 py-3 col-11 col-md-auto fs-small">
-                            <p class="font-heading m-0 mt-2">Name :<span class="fw-light ms-2"> Vishnu Chityala</span></p>
-                            <p class="font-heading m-0 mt-2">Email : <span class="fw-light ms-2">vishnurchityala@gmail.com</span></p>
-                            <p class="font-heading m-0 mt-2">Slot : <span class="fw-light ms-2">1:00AM-2:00AM</span></p>
-                            <button class="btn-cancel mt-3" style="font-size: x-small;">
-                                Cancel Seat
-                            </button>
-                        </div>
-                        <div class="glass-card px-3 py-3 col-11 col-md-auto fs-small">
-                            <p class="font-heading m-0 mt-2">Name :<span class="fw-light ms-2"> Vishnu Chityala</span></p>
-                            <p class="font-heading m-0 mt-2">Email : <span class="fw-light ms-2">vishnurchityala@gmail.com</span></p>
-                            <p class="font-heading m-0 mt-2">Slot : <span class="fw-light ms-2">1:00AM-2:00AM</span></p>
-                            <button class="btn-cancel mt-3" style="font-size: x-small;">
-                                Cancel Seat
-                            </button>
-                        </div>
-                        <div class="glass-card px-3 py-3 col-11 col-md-auto fs-small">
-                            <p class="font-heading m-0 mt-2">Name :<span class="fw-light ms-2"> Vishnu Chityala</span></p>
-                            <p class="font-heading m-0 mt-2">Email : <span class="fw-light ms-2">vishnurchityala@gmail.com</span></p>
-                            <p class="font-heading m-0 mt-2">Slot : <span class="fw-light ms-2">1:00AM-2:00AM</span></p>
-                            <button class="btn-cancel mt-3" style="font-size: x-small;">
-                                Cancel Seat
-                            </button>
-                        </div>
-                        <div class="glass-card px-3 py-3 col-11 col-md-auto fs-small">
-                            <p class="font-heading m-0 mt-2">Name :<span class="fw-light ms-2"> Vishnu Chityala</span></p>
-                            <p class="font-heading m-0 mt-2">Email : <span class="fw-light ms-2">vishnurchityala@gmail.com</span></p>
-                            <p class="font-heading m-0 mt-2">Slot : <span class="fw-light ms-2">1:00AM-2:00AM</span></p>
-                            <button class="btn-cancel mt-3" style="font-size: x-small;">
-                                Cancel Seat
-                            </button>
-                        </div>
-                        <div class="glass-card px-3 py-3 col-11 col-md-auto fs-small">
-                            <p class="font-heading m-0 mt-2">Name :<span class="fw-light ms-2"> Vishnu Chityala</span></p>
-                            <p class="font-heading m-0 mt-2">Email : <span class="fw-light ms-2">vishnurchityala@gmail.com</span></p>
-                            <p class="font-heading m-0 mt-2">Slot : <span class="fw-light ms-2">1:00AM-2:00AM</span></p>
-                            <button class="btn-cancel mt-3" style="font-size: x-small;">
-                                Cancel Seat
-                            </button>
-                        </div>
-                        <div class="glass-card px-3 py-3 col-11 col-md-auto fs-small">
-                            <p class="font-heading m-0 mt-2">Name :<span class="fw-light ms-2"> Vishnu Chityala</span></p>
-                            <p class="font-heading m-0 mt-2">Email : <span class="fw-light ms-2">vishnurchityala@gmail.com</span></p>
-                            <p class="font-heading m-0 mt-2">Slot : <span class="fw-light ms-2">1:00AM-2:00AM</span></p>
-                            <button class="btn-cancel mt-3" style="font-size: x-small;">
-                                Cancel Seat
-                            </button>
-                        </div>
-                        <div class="glass-card px-3 py-3 col-11 col-md-auto fs-small">
-                            <p class="font-heading m-0 mt-2">Name :<span class="fw-light ms-2"> Vishnu Chityala</span></p>
-                            <p class="font-heading m-0 mt-2">Email : <span class="fw-light ms-2">vishnurchityala@gmail.com</span></p>
-                            <p class="font-heading m-0 mt-2">Slot : <span class="fw-light ms-2">1:00AM-2:00AM</span></p>
-                            <button class="btn-cancel mt-3" style="font-size: x-small;">
-                                Cancel Seat
-                            </button>
-                        </div>
-                        <div class="glass-card px-3 py-3 col-11 col-md-auto fs-small">
-                            <p class="font-heading m-0 mt-2">Name :<span class="fw-light ms-2"> Vishnu Chityala</span></p>
-                            <p class="font-heading m-0 mt-2">Email : <span class="fw-light ms-2">vishnurchityala@gmail.com</span></p>
-                            <p class="font-heading m-0 mt-2">Slot : <span class="fw-light ms-2">1:00AM-2:00AM</span></p>
-                            <button class="btn-cancel mt-3" style="font-size: x-small;">
-                                Cancel Seat
+                            <button class="btn-success mt-3 ms-3" style="font-size: x-small;">
+                                Check In
                             </button>
                         </div>
                     </div>

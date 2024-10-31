@@ -348,6 +348,18 @@ body{
     width:100%;
 }
 
+.btn-success{
+    background-color: #2fbc00;
+    color: #ffffff;
+    border: 1px solid #2fbc00;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.8rem;
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+    font-weight: 500;
+    font-size: small;
+    box-shadow: 0 0 2.4rem rgba(106, 255, 0, 0.2);
+}
+
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
