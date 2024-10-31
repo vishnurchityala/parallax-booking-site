@@ -27,24 +27,78 @@ async function updateBookings(slotId) {
 
         // Check if querySnapshot is a valid object with forEach
         if (querySnapshot && querySnapshot.forEach) {
-            querySnapshot.forEach((doc) => {
-                const data = doc.data();
-                
+            querySnapshot.forEach(async (bookingDoc) => { // Renamed iterator to bookingDoc
+                const bookingData = bookingDoc.data();
+
                 // Ensure you filter based on the selected slot ID
-                if (data.slotId === slotId) {  // Assuming booking has slotId field
-                    bookingsContainer.innerHTML += `
-                        <div class="glass-card px-3 py-3 col-11 col-md-auto fs-small">
-                            <p class="font-heading m-0 mt-2">Name :<span class="fw-light ms-2">${data.userName}</span></p>
-                            <p class="font-heading m-0 mt-2">Email : <span class="fw-light ms-2">${data.userEmail}</span></p>
-                            <p class="font-heading m-0 mt-2">Slot : <span class="fw-light ms-2">${data.slotTiming}</span></p>
-                            <button class="btn-cancel mt-3" style="font-size: x-small;">
-                                Cancel Seat
-                            </button>
-                            <button class="btn-success mt-3" style="font-size: x-small;">
-                                Check In
-                            </button>
-                        </div>
+                if (bookingData.slotId === slotId) {  // Assuming booking has slotId field
+                    // Create a booking card container
+                    const bookingCard = document.createElement('div');
+                    bookingCard.className = 'glass-card px-3 py-3 col-11 col-md-auto fs-small';
+
+                    bookingCard.innerHTML = `
+                        <p class="font-heading m-0 mt-2">Name: <span class="fw-light ms-2">${bookingData.userName}</span></p>
+                        <p class="font-heading m-0 mt-2">Email: <span class="fw-light ms-2">${bookingData.userEmail}</span></p>
+                        <p class="font-heading m-0 mt-2">Slot: <span class="fw-light ms-2">${bookingData.slotTiming}</span></p>
                     `;
+
+                    // Create Cancel Seat button
+                    const cancelButton = document.createElement('button');
+                    cancelButton.className = 'btn-cancel mt-3';
+                    cancelButton.style.fontSize = 'x-small';
+                    cancelButton.textContent = 'Cancel Seat';
+                    cancelButton.addEventListener('click', async () => {
+                        // Create a reference to the booking document
+                        const loader = document.getElementById('loader');
+                        loader.classList.remove('d-none');
+                        const bookingDocRef = doc(bookingsCollection, bookingDoc.id); // Use bookingDoc.id
+
+                        // Create a reference to the slot document using bookingData.slotId
+                        const slotDocRef = doc(db, 'slots', bookingData.slotId); // Use bookingData.slotId
+
+                        try {
+                            // Get the slot document to update available and booked seats
+                            const slotSnapshot = await getDoc(slotDocRef); // Await getDoc here
+                            if (slotSnapshot.exists()) {
+                                const slotData = slotSnapshot.data();
+                                const newAvailableSeats = slotData.availableSeats + 1;
+                                const newBookedSeats = slotData.bookedSeats - 1;
+
+                                // Update the slot document
+                                await updateDoc(slotDocRef, { // Await updateDoc here
+                                    availableSeats: newAvailableSeats,
+                                    bookedSeats: newBookedSeats
+                                });
+                            } else {
+                                console.error('Slot document does not exist.');
+                            }
+
+                            // Delete the booking document
+                            await deleteDoc(bookingDocRef); // Await deleteDoc here
+                            console.log('Booking cancelled successfully!');
+                        } catch (error) {
+                            console.error('Error cancelling booking:', error);
+                            alert('Error cancelling booking. Please try again.');
+                        }
+                        updateBookings(slotId);
+                        loader.classList.add('d-none');
+                        console.log(`Canceling seat for ${bookingData.userName}`);
+                    });
+
+                    // Create Check In button
+                    const checkInButton = document.createElement('button');
+                    checkInButton.className = 'btn-success mt-3 ms-3';
+                    checkInButton.style.fontSize = 'x-small';
+                    checkInButton.textContent = 'Check In';
+                    checkInButton.addEventListener('click', () => {
+                        console.log(`Checking in ${bookingData.userName}`);
+                        // Implement check-in logic here
+                    });
+
+                    bookingCard.appendChild(cancelButton);
+                    bookingCard.appendChild(checkInButton);
+
+                    bookingsContainer.appendChild(bookingCard);
                 }
             });
         } else {
@@ -53,12 +107,14 @@ async function updateBookings(slotId) {
     } catch (error) {
         console.error('Error fetching bookings:', error);
     }
-    if (bookingsContainer.innerHTML === ''){
+
+    if (bookingsContainer.innerHTML === '') {
         bookingsContainer.innerHTML += `No Bookings found`;
     }
     loader.classList.add('d-none');
-
 }
+
+
 
 
 // Function to update login indicator
