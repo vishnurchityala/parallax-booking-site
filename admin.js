@@ -62,22 +62,40 @@ async function populateSlotsDetails() {
         const data = doc.data(); 
 
         detailsContainer.innerHTML += `
-            <div class="col-10 col-md-3 glass-card">
+            <div class="col-10 col-md-3 glass-card px-4 py-3">
                 <p class="font-heading m-0">SLOT: <span class="fw-light ms-2">${data.time}</span></p>
                 <hr>
-                <p class="font-heading fs-small m-0 mt-2">Available Seats: <span class="fw-light ms-2">${data.availableSeats} / ${data.availableSeats + data.bookedSeats}</span></p>
+                <p class="font-heading fs-small m-0 mt-2">Available Seats: <span class="fw-light font-sub-heading ms-2">${data.availableSeats} / ${data.availableSeats + data.bookedSeats}</span></p>
             </div>
         `;
     });
 }
 
+async function populateSlotsSelectMenu() {
+    const slotsSelectMenu = document.getElementById('slots-select-menu');
+    slotsSelectMenu.innerHTML = '';
+    const querySnapshot = await getDocs(slotsCollection);
+    querySnapshot.forEach(slot => {
+        const data = slot.data();
+        const opt = document.createElement('option'); 
+            opt.value = slot.id;
+            opt.textContent = data.time;
+            slotsSelectMenu.appendChild(opt); 
+    });
+}
+
+async function populateBookingsDetails() {
+}
+
 onAuthStateChanged(auth, (user) => {
-    updateLoginIndicator(user);
+    // updateLoginIndicator(user);
 });
 
 document.addEventListener('DOMContentLoaded', async () => {
     const loader = document.getElementById('loader');
     loader.classList.remove('d-none');
     await populateSlotsDetails();
+    await populateBookingsDetails();
+    await populateSlotsSelectMenu();
     loader.classList.add('d-none');
 });
