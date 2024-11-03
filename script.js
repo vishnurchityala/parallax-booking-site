@@ -1,12 +1,13 @@
 // Import necessary Firebase modules
-import { db, auth } from './firebase.config.js'; 
+import { db, auth,provider} from './firebase.config.js'; 
 import { collection, getDocs, doc, getDoc, updateDoc, addDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js"; 
-import { onAuthStateChanged, signInWithPopup, GoogleAuthProvider, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js"; 
+import { onAuthStateChanged, signInWithPopup,signInWithRedirect, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js"; 
 
 // Initialize Firestore collections
 const slotsCollection = collection(db, 'slots');
 const bookingsCollection = collection(db, 'bookings'); 
-const provider = new GoogleAuthProvider();
+
+// const provider = new GoogleAuthProvider();
 
 // Function to load slot data and update the page
 async function loadSlotDetails() {
@@ -175,13 +176,16 @@ function updateLoginIndicator(user) {
         loginLink.href = '#'; 
         loginLink.textContent = 'Login';
         loginLink.addEventListener('click', async (event) => {
-            event.preventDefault(); 
+            event.preventDefault();
+            console.log('Login link clicked. Attempting to sign in...');
             try {
                 loader.classList.remove('d-none');
-                await signInWithPopup(auth, provider);
+                await signInWithRedirect(auth, provider);
+                console.log('Successfully signed in');
                 loader.classList.add('d-none');
             } catch (error) {
-                console.error('Error during sign-in:', error);
+                console.error('Sign-in error:', error);
+                alert(`Error: ${error.message}`);
                 loader.classList.add('d-none');
             }
         });
