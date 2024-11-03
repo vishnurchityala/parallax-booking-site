@@ -180,7 +180,7 @@ function updateLoginIndicator(user) {
             console.log('Login link clicked. Attempting to sign in...');
             try {
                 loader.classList.remove('d-none');
-                await signInWithRedirect(auth, provider);
+                await signInWithPopup(auth, provider);
                 console.log('Successfully signed in');
                 loader.classList.add('d-none');
             } catch (error) {
