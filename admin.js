@@ -6,7 +6,7 @@ import { onAuthStateChanged, signInWithPopup, signOut } from "https://www.gstati
 // Initialize Firestore collections
 const slotsCollection = collection(db, 'slots');
 const bookingsCollection = collection(db, 'bookings');
-const allowedEmails = ["e23cseu0049@bennett.edu.in","e23cseu0055@bennett.edu.in"];
+const allowedEmails = ["e23cseu0049@bennett.edu.in","e23cseu0055@bennett.edu.in","e23cseu1951@bennett.edu.in","e23cseu0068@bennett.edu.in","e23cseu1989@bennett.edu.in","e23cseu2246@bennett.edu.in"];
 const loader = document.getElementById('loader');
 const slotSelectionMenu = document.getElementById('slots-select-menu');
 const bookingsContainer = document.getElementById('bookings-container');
