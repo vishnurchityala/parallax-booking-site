@@ -93,22 +93,25 @@ async function updateBookings(slotId) {
                         checkInButton.style.fontSize = 'x-small';
                         checkInButton.textContent = 'Check In';
                         checkInButton.addEventListener('click', async () => {
+                            loader.classList.remove('d-none');
                             console.log(`Checking in ${bookingData.userName}`);
                             try {
                                 const docRef = await addDoc(checkInCollection, {
                                     bookingId: bookingDoc.id
                                 });
                                 console.log("Document added with ID: ", docRef.id);
-                                await updateBookings(slotId); // Refresh bookings
+                                await updateBookings(slotId);
                             } catch (error) {
                                 console.error("Error adding document: ", error);
                             }
+                            loader.classList.add('d-none');
                         });
                     } else {
                         checkInButton.className = 'btn-warning mt-3 ms-3';
                         checkInButton.style.fontSize = 'x-small';
                         checkInButton.textContent = 'Check Out';
                         checkInButton.addEventListener('click', async () => {
+                            loader.classList.remove('d-none');
                             console.log(`Checking out ${bookingData.userName}`);
                             try {
                                 await deleteDoc(checkinRef);
@@ -117,6 +120,7 @@ async function updateBookings(slotId) {
                             } catch (error) {
                                 console.error("Error deleting document:", error);
                             }
+                            loader.classList.add('d-none');
                         });
                     }
 
