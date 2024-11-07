@@ -24,7 +24,7 @@
             <p class="page-hero-text" style="font-size: small;">Presents</p>
             <p class="page-hero-text-gradient">ParallaX</p>
             <p class="page-hero-text mt-2 mb-1">Bennett's first 3D Movie Night – where the screen hits back!</p>
-            <p class="page-hero-text mt-2 mb-1" style="font-size:14px;">11 November  - 7:00 PM Onwards</p>
+            <p class="page-hero-text mt-2 mb-1" id="event-timing" style="font-size:14px;"></p>
             <a href="./registration.html" class="btn btn-white mt-5">
                 Book Seat <i class="fas fa-arrow-right ms-2" style="font-size:small;"></i>
             </a>        
@@ -44,7 +44,38 @@
                 <a href=""><i class="fa-solid fa-link me-2" style="font-size:large;"></i></a>
             </div>
             <p class="mt-5">Altreality Club of Bennett University</p>
-        </div
+        </div>
 </body>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const textElement = document.getElementById("event-timing");
+    const text = "11 November - 7:00 PM Onwards";
+    let index = 0;
+    let isTyping = true;
+    function animateText() {
+        if (isTyping) {
+            if (index < text.length) {
+                textElement.innerHTML += text.charAt(index);
+                index++;
+                setTimeout(animateText, 100);
+            } else {
+                isTyping = false;
+                setTimeout(animateText, 1000);
+            }
+        } else {
+            if (index > 1) {
+                textElement.innerHTML = text.substring(0, index - 1);
+                index--;
+                setTimeout(animateText, 100);
+            } else {
+                isTyping = true;
+                setTimeout(animateText, 100);
+            }
+        }
+    }
+
+    animateText();
+});
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </html>
