@@ -6,7 +6,7 @@ import { onAuthStateChanged, signInWithPopup, signOut } from "https://www.gstati
 // Initialize Firestore collections
 const slotsCollection = collection(db, 'slots');
 const bookingsCollection = collection(db, 'bookings');
-const checkinCollection = collection(db, 'checkins');
+const checkInCollection = collection(db, 'checkins');
 const allowedEmails = ["e23cseu0049@bennett.edu.in","e23cseu0055@bennett.edu.in","e23cseu1951@bennett.edu.in","e23cseu0068@bennett.edu.in","e23cseu1989@bennett.edu.in","e23cseu2246@bennett.edu.in","e23cseu0051@bennett.edu.in","e23cseu2192@bennett.edu.in"];
 const loader = document.getElementById('loader');
 const slotSelectionMenu = document.getElementById('slots-select-menu');
@@ -26,7 +26,7 @@ async function updateBookings(slotId) {
         const querySnapshot = await getDocs(bookingsCollection);
         
         if (!querySnapshot.empty) {
-            querySnapshot.forEach(async (bookingDoc) => {
+            for (const bookingDoc of querySnapshot.docs) {
                 const bookingData = bookingDoc.data();
                 
                 if (bookingData.slotId === slotId) {
@@ -70,25 +70,61 @@ async function updateBookings(slotId) {
                             console.error('Error cancelling booking:', error);
                             alert('Error cancelling booking. Please try again.');
                         }
-                        updateBookings(slotId);
+                        await updateBookings(slotId);
                         loader.classList.add('d-none');
                         console.log(`Canceling seat for ${bookingData.userName}`);
                     });
 
                     const checkInButton = document.createElement('button');
-                    checkInButton.className = 'btn-success mt-3 ms-3';
-                    checkInButton.style.fontSize = 'x-small';
-                    checkInButton.textContent = 'Check In';
-                    checkInButton.addEventListener('click', () => {
-                        console.log(`Checking in ${bookingData.userName}`);
-                        // Implement check-in logic here
+                    let isCheckedIn = false;
+                    let checkinRef;
+
+                    const checkInSnapShot = await getDocs(checkInCollection);
+                    checkInSnapShot.forEach((doc) => {
+                        const data = doc.data();
+                        if (data.bookingId === bookingDoc.id) {
+                            isCheckedIn = true;
+                            checkinRef = doc.ref;
+                        }
                     });
+
+                    if (!isCheckedIn) {
+                        checkInButton.className = 'btn-success mt-3 ms-3';
+                        checkInButton.style.fontSize = 'x-small';
+                        checkInButton.textContent = 'Check In';
+                        checkInButton.addEventListener('click', async () => {
+                            console.log(`Checking in ${bookingData.userName}`);
+                            try {
+                                const docRef = await addDoc(checkInCollection, {
+                                    bookingId: bookingDoc.id
+                                });
+                                console.log("Document added with ID: ", docRef.id);
+                                await updateBookings(slotId); // Refresh bookings
+                            } catch (error) {
+                                console.error("Error adding document: ", error);
+                            }
+                        });
+                    } else {
+                        checkInButton.className = 'btn-warning mt-3 ms-3';
+                        checkInButton.style.fontSize = 'x-small';
+                        checkInButton.textContent = 'Checked In';
+                        checkInButton.addEventListener('click', async () => {
+                            console.log(`Checking out ${bookingData.userName}`);
+                            try {
+                                await deleteDoc(checkinRef);
+                                console.log("Check-out successful");
+                                await updateBookings(slotId); // Refresh bookings
+                            } catch (error) {
+                                console.error("Error deleting document:", error);
+                            }
+                        });
+                    }
 
                     bookingCard.appendChild(cancelButton);
                     bookingCard.appendChild(checkInButton);
                     bookingsContainer.appendChild(bookingCard);
                 }
-            });
+            }
         } else {
             bookingsContainer.innerHTML = 'No Bookings found';
             bookingsContainer.classList.add('font-heading');
@@ -99,6 +135,7 @@ async function updateBookings(slotId) {
         loader.classList.add('d-none');
     }
 }
+
 
 function updateLoginIndicator(user) {
     const loginIndicator = document.querySelector('.glass-login');
