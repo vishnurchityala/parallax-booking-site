@@ -107,13 +107,13 @@ async function updateBookings(slotId) {
                     } else {
                         checkInButton.className = 'btn-warning mt-3 ms-3';
                         checkInButton.style.fontSize = 'x-small';
-                        checkInButton.textContent = 'Checked In';
+                        checkInButton.textContent = 'Check Out';
                         checkInButton.addEventListener('click', async () => {
                             console.log(`Checking out ${bookingData.userName}`);
                             try {
                                 await deleteDoc(checkinRef);
                                 console.log("Check-out successful");
-                                await updateBookings(slotId); // Refresh bookings
+                                await updateBookings(slotId); 
                             } catch (error) {
                                 console.error("Error deleting document:", error);
                             }
