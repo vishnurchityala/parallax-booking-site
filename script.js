@@ -156,7 +156,7 @@ function updateLoginIndicator(user) {
     if (user) {
         const iconDiv = document.createElement('div');
         const icon = document.createElement('i');
-        icon.classList.add('fa-solid', 'fa-user', 'text-white'); 
+        icon.classList.add('fa-solid', 'fa-arrow-right-from-bracket', 'text-white'); 
 
         iconDiv.appendChild(icon);
         loginIndicator.appendChild(iconDiv);
