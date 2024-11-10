@@ -182,7 +182,7 @@ body{
 .seats-container {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    gap: 24px;
+    gap: 26px;
     justify-content: center;
     align-items: center;
     margin: 20px auto;
@@ -192,7 +192,7 @@ body{
 }
 
 .seat-icon i {
-    font-size: 18px;
+    font-size: 22px;
 }
 
 .seat-icon.white i {
