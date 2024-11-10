@@ -7,7 +7,7 @@ import { onAuthStateChanged, signInWithPopup, signOut } from "https://www.gstati
 const slotsCollection = collection(db, 'slots');
 const bookingsCollection = collection(db, 'bookings');
 const checkInCollection = collection(db, 'checkins');
-const allowedEmails = ["e23cseu0049@bennett.edu.in","e23cseu0055@bennett.edu.in","e23cseu1951@bennett.edu.in","e23cseu0068@bennett.edu.in","e23cseu1989@bennett.edu.in","e23cseu2246@bennett.edu.in","e23cseu0051@bennett.edu.in","e23cseu2192@bennett.edu.in"];
+const allowedEmails = ["e23cseu0049@bennett.edu.in","e23cseu0032@bennett.edu.in","e23cseu0055@bennett.edu.in","e23cseu1951@bennett.edu.in","e23cseu0068@bennett.edu.in","e23cseu1989@bennett.edu.in","e23cseu2246@bennett.edu.in","e23cseu0051@bennett.edu.in","e23cseu2192@bennett.edu.in"];
 const loader = document.getElementById('loader');
 const slotSelectionMenu = document.getElementById('slots-select-menu');
 const bookingsContainer = document.getElementById('bookings-container');
