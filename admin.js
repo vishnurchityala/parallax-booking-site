@@ -12,11 +12,43 @@ const loader = document.getElementById('loader');
 const slotSelectionMenu = document.getElementById('slots-select-menu');
 const bookingsContainer = document.getElementById('bookings-container');
 
+
+
 // Update bookings on slot selection change
 slotSelectionMenu.addEventListener('change', (event) => {
     const selectedOption = event.target.value;
     updateBookings(selectedOption);
 });
+
+async function updateBookingCheckInButton(elementId,bookingId) {
+
+    const bookingCard = document.getElementById(elementId);
+    const checkInSnapShot = await getDocs(checkInCollection);
+    let isCheckedIn = false;
+    let checkinRef;
+    
+    checkInSnapShot.forEach((doc) => {
+        const data = doc.data();
+        if (data.bookingId === bookingId) {
+            isCheckedIn = true;
+            checkinRef = doc.ref;
+            }
+        });
+        if (!isCheckedIn) {
+            const checkInButton = document.getElementById(elementId+'chck');
+            checkInButton.className = 'btn-success mt-3 ms-3';
+            checkInButton.style.fontSize = 'x-small';
+            checkInButton.textContent = 'Check In';
+
+        } else {
+            const checkInButton = document.getElementById(elementId+'chck');
+            checkInButton.className = 'btn-warning mt-3 ms-3';
+            checkInButton.style.fontSize = 'x-small';
+            checkInButton.textContent = 'Check Out';
+
+        }
+    
+}
 
 async function updateBookings(slotId) {
     loader.classList.remove('d-none');
@@ -31,6 +63,7 @@ async function updateBookings(slotId) {
                 
                 if (bookingData.slotId === slotId) {
                     const bookingCard = document.createElement('div');
+                    bookingCard.id = bookingData.userEmail;
                     bookingCard.className = 'glass-card px-3 py-3 col-11 col-md-auto fs-small';
 
                     bookingCard.innerHTML = `
@@ -70,7 +103,7 @@ async function updateBookings(slotId) {
                             console.error('Error cancelling booking:', error);
                             alert('Error cancelling booking. Please try again.');
                         }
-                        await updateBookings(slotId);
+                        document.getElementById(bookingData.userEmail).remove();
                         loader.classList.add('d-none');
                         console.log(`Canceling seat for ${bookingData.userName}`);
                     });
@@ -78,6 +111,7 @@ async function updateBookings(slotId) {
                     const checkInButton = document.createElement('button');
                     let isCheckedIn = false;
                     let checkinRef;
+                    checkInButton.id = bookingData.userEmail + 'chck';
 
                     const checkInSnapShot = await getDocs(checkInCollection);
                     checkInSnapShot.forEach((doc) => {
@@ -100,7 +134,7 @@ async function updateBookings(slotId) {
                                     bookingId: bookingDoc.id
                                 });
                                 console.log("Document added with ID: ", docRef.id);
-                                await updateBookings(slotId);
+                                updateBookingCheckInButton(bookingData.userEmail,bookingDoc.id);
                             } catch (error) {
                                 console.error("Error adding document: ", error);
                             }
@@ -116,7 +150,8 @@ async function updateBookings(slotId) {
                             try {
                                 await deleteDoc(checkinRef);
                                 console.log("Check-out successful");
-                                await updateBookings(slotId); 
+                                // updateBookingCheckInButton(bookingData.userEmail,bookingDoc.id);
+
                             } catch (error) {
                                 console.error("Error deleting document:", error);
                             }
