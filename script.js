@@ -6,6 +6,7 @@ import { onAuthStateChanged, signInWithPopup,signInWithRedirect, signOut } from 
 // Initialize Firestore collections
 const slotsCollection = collection(db, 'slots');
 const bookingsCollection = collection(db, 'bookings'); 
+const waitingsCollection = collection(db, 'waitings'); 
 
 // const provider = new GoogleAuthProvider();
 
@@ -235,6 +236,14 @@ async function bookSeat(user, selectedSlotId) {
                 console.log('Booking successful!'); 
             } else {
                 console.log('No seats available for this slot.');
+                const bookingData = {
+                    userEmail: user.email,
+                    userName: user.displayName,
+                    slotId: selectedSlotId,
+                    slotTiming: slot.time, 
+                    timestamp: new Date()
+                };
+                await addDoc(waitingsCollection,bookingData);
             }
         } else {
             console.error('Selected slot does not exist.');
