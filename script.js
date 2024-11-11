@@ -129,6 +129,15 @@ async function checkUserBookings(user) {
             bookSeatButton.style.display = 'inline-block'; 
             cancelSeatButton.style.display = 'inline-block';
         } else {
+            const slotTimings = {
+                slot1: "7:00PM - 8:00PM",
+                slot2: "8:00PM - 9:00PM",
+                slot3: "9:00PM - 10:00PM",
+                slot4: "10:00PM - 11:00PM",
+                slot5: "11:00PM - 12:00AM",
+                slot6: "12:00AM - 1:00AM",
+                slot7: "1:00AM - 2:00AM"
+            };
             // No booking found
             bookingTicketDiv.classList.add('d-none'); // Hide booking ticket div
 
@@ -139,6 +148,19 @@ async function checkUserBookings(user) {
             bookSeatButton.classList.add('btn-white'); 
             bookSeatButton.style.display = 'inline-block'; 
             cancelSeatButton.style.display = 'none';
+
+            const waitingsSnapShot = await getDocs(waitingsCollection);
+            const waitingsBooking = waitingsSnapShot.docs.find(doc => doc.data().userEmail === user.email);
+            if (waitingsBooking){
+                const slotId = waitingsBooking.slotId;
+                bookingSlotTiming.textContent = slotTimings[slotId];
+                const formattedSlotId = `Waiting`;
+                bookSeatButton.textContent = `${formattedSlotId}`;            
+                bookSeatButton.disabled = true; 
+                // bookSeatButton.classList.add('btn-warning'); 
+                // bookSeatButton.classList.remove('btn-white'); 
+                // bookSeatButton.style.display = 'inline-block'; 
+            }
         }
     } else {
         // User is not logged in
