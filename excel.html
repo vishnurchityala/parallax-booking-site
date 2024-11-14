@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Export Firebase Collection to Excel</title>
+</head>
+<body>
+
+  <h1>Export Firebase Data to Excel</h1>
+  <button onclick="exportToExcel()">Download Excel</button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
+    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+  apiKey: "AIzaSyDkQHcQrfueGVh9UlPswWdt9dVQbKiPAPs",
+  authDomain: "parallax-seat-booking.firebaseapp.com",
+  projectId: "parallax-seat-booking",
+  storageBucket: "parallax-seat-booking.appspot.com",
+  messagingSenderId: "962655386239",
+  appId: "1:962655386239:web:eb30d8bc4bfdcf16761d4a",
+  measurementId: "G-L9ZQYJQVNH"
+};
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    async function exportToExcel() {
+      try {
+        const collectionName = 'waitings';
+        const querySnapshot = await getDocs(collection(db, collectionName));
+
+        const data = [];
+        querySnapshot.forEach((doc) => {
+          data.push({ id: doc.id, ...doc.data() });
+        });
+
+        console.log("Retrieved Data:", data);
+
+        if (data.length === 0) {
+          alert("No data found in Firestore collection!");
+          return;
+        }
+
+        const worksheet = XLSX.utils.json_to_sheet(data);
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, collectionName);
+
+        XLSX.writeFile(workbook, `${collectionName}.xlsx`);
+        alert("Excel file has been downloaded successfully!");
+      } catch (error) {
+        console.error("Error exporting data to Excel:", error);
+        alert("Failed to export data.");
+      }
+    }
+
+    window.exportToExcel = exportToExcel;
+  </script>
+
+</body>
+</html>
